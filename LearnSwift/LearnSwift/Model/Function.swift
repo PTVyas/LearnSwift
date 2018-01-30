@@ -113,6 +113,12 @@ class Function: NSObject
     
     
     //MARK:- Comman
+    func printSystemFont() -> Void {
+        UIFont.familyNames.forEach({ familyName in
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            print(familyName, fontNames)
+        })
+    }
     func getRandomColor() -> UIColor {
         let randomRed:CGFloat = CGFloat(drand48())
         let randomGreen:CGFloat = CGFloat(drand48())
