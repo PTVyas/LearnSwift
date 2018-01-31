@@ -111,6 +111,29 @@ class Function: NSObject
         return false
     }
     
+    //MARK:- TextField
+    //MyFunction().AddImage(TextField: txtCity, ImageName: "icon_Down_gray", Frame: CGRect(x: 0, y: 0, width: txtCity.frame.height*0.80, height: txtCity.frame.height/2), backgroundColor: UIColor.clear, setLeftSize: false)
+    func AddImage(TextField: UITextField, ImageName:String, Frame:CGRect, backgroundColor:UIColor, setLeftSize: Bool)
+    {
+        let View = UIView(frame: Frame)
+        View.backgroundColor = backgroundColor
+        
+        let imageView = UIImageView(frame: Frame)
+        imageView.image = UIImage(named: ImageName)
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        
+        View.addSubview(imageView)
+        
+        if setLeftSize == true {
+            TextField.leftViewMode = .always
+            TextField.leftView = View
+        }
+        else {
+            TextField.rightViewMode = .always
+            TextField.rightView = View
+        }
+    }
+    
     
     //MARK:- Comman
     func printSystemFont() -> Void {
