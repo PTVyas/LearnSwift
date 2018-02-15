@@ -16,6 +16,7 @@ class Function: NSObject
 {
     //MARK:- AlertView
     func showAlertMessage(Message: String, AutoHide:Bool) -> Void {
+        DispatchQueue.main.async {
         let alert = UIAlertController(title: Message, message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
         if AutoHide == true {
@@ -31,6 +32,7 @@ class Function: NSObject
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         }
         UIApplication.shared.windows[0].rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
     
     //MARK:- String
@@ -67,13 +69,13 @@ class Function: NSObject
         return value
     }
     
-    func replaceValueInString(mainString: String , replaceValue: String , toValue: String ) -> String {
+    func string_ReplaceValues(strString: NSString, FromValue: NSString, ToValues: NSString) -> NSString {
         var value = String()
         value = self.trimmingString(strValue: mainString)
-        
-        value = value.replacingOccurrences(of: replaceValue, with: toValue)
-        return value
+        let result = value.replacingOccurrences(of: FromValue as String, with: ToValues as String)
+        return result as NSString
     }
+    
     //MARK:- Number
     func valueIsnagative (value: Int) -> Bool {
         if (value >= 0) {
